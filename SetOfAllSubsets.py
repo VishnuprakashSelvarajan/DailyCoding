@@ -10,7 +10,6 @@ You may also use a list or array to represent a set.
 
 
 def all_subsets(given_array):
-    # subset = int(given_array.length)
     subset = [0 for i in range(len(given_array))]
     return helper(given_array, subset, 0)
 
@@ -26,5 +25,6 @@ def helper(given_array, subset, i):
         helper(given_array, subset, i + 1)
 
     return output
+
 
 print(all_subsets([1, 2, 3]))

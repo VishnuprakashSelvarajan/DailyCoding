@@ -28,3 +28,24 @@ def helper(given_array, subset, i):
 
 
 print(all_subsets([1, 2, 3]))
+
+"""
+Another method similar
+"""
+
+
+def subsets(nums: List[int]) -> List[List[int]]:
+    output = []
+    helper(nums, output, [], 0)
+    return output
+
+
+def helper(nums, output, curr, index):
+    output.append(list(curr))
+    for i in range(index, len(nums)):
+        curr.append(nums[i])
+        helper(nums, output, curr, i + 1)
+        curr.pop()
+
+
+print(subsets[1, 2, 3])

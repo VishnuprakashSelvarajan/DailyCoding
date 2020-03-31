@@ -211,14 +211,19 @@ def rotate_image_inplace(matrix):
     # 2 5 8
     # 3 6 9
 
-    for i in range(n):
-        for j in range((n//2)):
-            matrix[i][j],matrix[i][n-1-j] = matrix[i][n-1-j],matrix[i][j]
+    #for i in range(n):
+    #    for j in range((n//2)):
+    #        matrix[i][j],matrix[i][n-1-j] = matrix[i][n-1-j],matrix[i][j]
 
     # Then flip the matrix horizontally. ( swap(matrix[i][j], matrix[i][len(matrix)- 1 - j])
     # 7 4 1
     # 8 5 2
     # 9 6 3
+
+    for i in range(n):
+        matrix[i] = matrix[i][::-1]
+
+    # Or we can just reverse each row on the matrix
 
     return matrix
 

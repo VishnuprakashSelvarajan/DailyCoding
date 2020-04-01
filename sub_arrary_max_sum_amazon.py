@@ -10,22 +10,16 @@ Given the array [-5, -1, -8, -9], the maximum sum would be 0, since we would not
 
 Do this in O(N) time.
 """
-def max_sum_sub_array(array):
-
-    max_sum = sum(array)
-    if max_sum <= 0:
-        return 0
-
-    for i in range(len(array)):
-        temp_sum = array[i]
-        for j in range(i+1, len(array)):
-            temp_sum += array[j]
-
-        max_sum = max(max_sum, temp_sum)
-
-    return max_sum
+def max_sum_sub_array(nums):
+    maxcurr = nums[0]
+    maxglobal = nums[0]
+    for i in range(1, len(nums)):
+        maxcurr = max(nums[i], maxcurr + nums[i])
+        maxglobal = max(maxcurr, maxglobal)
+    return maxglobal
 
 print(max_sum_sub_array([34, -50, 42, 14, -5, 86]))
+
 
 
 

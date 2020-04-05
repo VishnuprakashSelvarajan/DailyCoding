@@ -6,3 +6,7 @@ rotation of s1 using only one call to Substring
 (e.g., "waterbottle" is a rotation of "erbottlewat").
 """
 
+def stringRotation(s1, s2):
+    return (s2 in s1+s1) and (len(s1) == len(s2))
+
+print(stringRotation('waterbottle', 'erbottlewat'))

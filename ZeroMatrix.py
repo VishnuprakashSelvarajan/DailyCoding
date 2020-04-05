@@ -17,8 +17,6 @@ def zeroMatrix(matrix):
     for row in zero_positions:
         for i in range(column_len):
             matrix[row[0]][i] = 0
-
-    for row in zero_positions:
         for i in range(len(matrix)):
             matrix[i][row[1]] = 0
 

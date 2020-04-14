@@ -11,26 +11,28 @@ Add last element.                       O(1)                O(1)
 Remove last element.                    O(n)                O(1)
 """
 
+
 class node:
     def __init__(self, data=None):
-        self.data=data
-        self.next=None
+        self.data = data
+        self.next = None
+
 
 class linked_list:
     def __init__(self):
         self.head = node()
 
-    def append(self,data):
+    def append(self, data):
         new_node = node(data)
         cur = self.head
-        while cur.next != None:
+        while cur.next is not None:
             cur = cur.next
         cur.next = new_node
 
     def length(self):
         cur = self.head
         total = 0
-        while cur.next != None:
+        while cur.next is not None:
             total += 1
             cur = cur.next
         return total
@@ -38,12 +40,12 @@ class linked_list:
     def display(self):
         elements = []
         cur_node = self.head
-        while cur_node.next != None:
+        while cur_node.next is not None:
             cur_node = cur_node.next
             elements.append(cur_node.data)
         print(elements)
 
-    def get(self,index):
+    def get(self, index):
         if index >= self.length():
             print("ERROR: 'get' out of range")
             return None
@@ -69,8 +71,6 @@ class linked_list:
             cur_index += 1
 
 
-
-
 my_list = linked_list()
 my_list.display()
 my_list.append(1)
@@ -82,4 +82,3 @@ my_list.display()
 print("The Element on the 3rd Index is %s" % my_list.get(3))
 my_list.delete(3)
 my_list.display()
-

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b12cf2d2-996c-4674-8db2-c8dc7340cd89" name="Vishnu-WS">
+        <fileTransfer rootFolder="/ws/viselvar-sjc/" accessType="SFTP" host="sj20e19-lnx-v25" port="22" sshConfigId="403f9ca2-edfb-4927-b644-4b4f2b5e26c4" sshConfig="viselvar@sj20e19-lnx-v25:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

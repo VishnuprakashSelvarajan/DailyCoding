@@ -86,3 +86,22 @@ def merge(intervals, newInterval):
 
 print(merge([[3,5],[12,15]], [6,6]))
 
+def insertion_sort(arr):
+
+    #Traverse through the array
+    for i in range(1, len(arr)):
+
+        key = arr[i]
+
+        # Move elements of arr[0..i-1], that are
+        # greater than key, to one position ahead
+        # of their current position
+        j = i-1
+        while j >= 0 and key < arr[j]:
+            arr[j+1]  = arr[j]
+            j -= 1
+        arr[j+1] = key
+
+
+
+print(insertion_sort([12, 11, 13, 5, 6]))

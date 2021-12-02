@@ -184,3 +184,142 @@ quickSort(arr, 0, n-1)
 print("Sorted array is:")
 for i in range(n):
     print("%d" % arr[i])
+
+# Case 1: M ~ N
+def findDuplicates(arr1, arr2):
+    duplicates = set()
+    i,j = 0,0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] == arr2[j]:
+            duplicates.add(arr1[i])
+            i+=1
+            j+=1
+        elif arr1[i] < arr2[j]:
+            i+=1
+        else:
+            j+=1
+
+    return duplicates
+
+print(findDuplicates([1,2,3,5,6,7,20], [3,6,7,8,20,7]))
+
+# Case 2: M >> N
+def findDuplicatesBinary(arr1, arr2):
+    duplicates = []
+    for number in arr1:
+        if binarySearch(number, arr2) != -1:
+            duplicates.append(number)
+
+    return duplicates
+
+def binarySearch(number, arr2):
+    start = 0
+    end = len(arr2)-1
+    while start <=end:
+        mid = start + int((end-start)/2)
+        if number > arr2[mid]:
+            start = mid + 1
+        elif number == arr2[mid]:
+            return number
+        else:
+            end = mid - 1
+    return -1
+
+print(findDuplicatesBinary([1,2,3,5,6,7,20], [3,6,7,8,20,7]))
+
+
+def find_first(array, num):
+
+    start = 0
+    end = len(array)-1
+    index = -1
+    while start < end:
+        mid = start + int((end-start)/2)
+        if num > array[mid]:
+            start = mid +1
+            continue
+        elif num == array[mid]:
+            index = mid
+            end = mid
+            continue
+        else:
+            end = mid
+            continue
+
+    return index
+
+print(find_first([200,200,200,200,200,200,200,200,200,500,500,500,500,600], 600))
+
+def mergeIntervals(intervals):
+
+    intervals.sort()
+    if intervals == []:
+        return []
+    result = [intervals[0]]
+    for i in range(0,len(intervals)):
+        if result[-1][1] >= intervals[i][0]:
+            result[-1] = [min(result[-1][0], intervals[i][0]), max(result[-1][1], intervals[i][1])]
+        else:
+            result.append(intervals[i])
+
+    return result
+
+print(mergeIntervals([[2,5],[2,10],[23,23],[34,56]]))
+
+
+def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    stack, result = [], []
+    node = root
+    while node or stack:
+        while node:
+            stack.append(node)
+            node = node.left
+
+        node = stack.pop()
+        result.append(node.val)
+
+        node = node.right
+
+    return result
+
+def inorderTraversal_2(self, root: Optional[TreeNode]) -> List[int]:
+
+    result = []
+    node = root
+
+    def preorder(node):
+        if node:
+            preorder(node.left)
+            result.append(node.val)
+            preorder(node.right)
+
+    preorder(node)
+    return result
+
+
+def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+    result = []
+    node = root
+
+    def preorder(node):
+        if node:
+            result.append(node.val)
+            preorder(node.left)
+            preorder(node.right)
+
+    preorder(node)
+    return result
+
+def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+    value = []
+
+    def depth(root):
+        if root:
+            depth(root.left)
+            depth(root.right)
+            value.append(root.val)
+
+    depth(root)
+    return value

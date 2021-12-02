@@ -267,7 +267,7 @@ def mergeIntervals(intervals):
 print(mergeIntervals([[2,5],[2,10],[23,23],[34,56]]))
 
 
-def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def inorderTraversal_2(self, root: Optional[TreeNode]) -> List[int]:
     stack, result = [], []
     node = root
     while node or stack:
@@ -282,44 +282,41 @@ def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
     return result
 
-def inorderTraversal_2(self, root: Optional[TreeNode]) -> List[int]:
+def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
     result = []
-    node = root
 
-    def preorder(node):
-        if node:
-            preorder(node.left)
-            result.append(node.val)
-            preorder(node.right)
+    def inorder(root):
+        if root:
+            inorder(root.left)
+            result.append(root.val)
+            inorder(root.right)
 
-    preorder(node)
+    inorder(root)
     return result
 
 
 def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
     result = []
-    node = root
+    def preorder(root):
+        if root:
+            result.append(root.val)
+            preorder(root.left)
+            preorder(root.right)
 
-    def preorder(node):
-        if node:
-            result.append(node.val)
-            preorder(node.left)
-            preorder(node.right)
-
-    preorder(node)
+    preorder(root)
     return result
 
 def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
     value = []
 
-    def depth(root):
+    def postorder(root):
         if root:
-            depth(root.left)
-            depth(root.right)
-            value.append(root.val)
+            postorder(root.left)
+            postorder(root.right)
+            value.postorder(root.val)
 
-    depth(root)
+    postorder(root)
     return value

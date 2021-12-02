@@ -320,3 +320,24 @@ def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
     postorder(root)
     return value
+
+def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    if not root:
+        return []
+    out = []
+    parents = [root]
+    children = []
+    level = []
+    while len(parents) > 0:
+        parent = parents.pop(0)
+        if parent.left:
+            children.append(parent.left)
+        if parent.right:
+            children.append(parent.right)
+        level.append(parent.val)
+        if len(parents) == 0:
+            parents = children
+            children = []
+            out.append(level)
+            level = []
+    return out

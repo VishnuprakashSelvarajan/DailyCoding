@@ -267,7 +267,7 @@ def mergeIntervals(intervals):
 print(mergeIntervals([[2,5],[2,10],[23,23],[34,56]]))
 
 
-def inorderTraversal_2(self, root: Optional[TreeNode]) -> List[int]:
+def inorderTraversal_2(root):
     stack, result = [], []
     node = root
     while node or stack:
@@ -282,7 +282,7 @@ def inorderTraversal_2(self, root: Optional[TreeNode]) -> List[int]:
 
     return result
 
-def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def inorderTraversal(root):
 
     result = []
 
@@ -296,7 +296,7 @@ def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
     return result
 
 
-def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def preorderTraversal(root):
 
     result = []
     def preorder(root):
@@ -308,7 +308,7 @@ def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
     preorder(root)
     return result
 
-def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def postorderTraversal(root):
 
     value = []
 
@@ -316,12 +316,12 @@ def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if root:
             postorder(root.left)
             postorder(root.right)
-            value.postorder(root.val)
+            value.append(root.val)
 
     postorder(root)
     return value
 
-def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+def levelOrder(root):
     if not root:
         return []
     out = []
@@ -341,3 +341,94 @@ def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
             out.append(level)
             level = []
     return out
+
+def test(nums):
+
+    def squares(a):
+        return a*a
+    def even(a):
+        return a%2 ==0
+
+    #return list((map(squares, nums)))
+    #return list((map(lambda x: x**2, nums)))
+    return list(filter(lambda x: x%2==0, nums))
+    #return list(filter(even, nums))
+
+print(test([2,3,4,5,6,7,8,9]))
+
+memo = {}
+def fibnocci(n):
+    if n in memo:
+        return memo[n]
+
+    if n == 0 or n == 1:
+        return n
+
+    output = fibnocci(n-2) + fibnocci(n-1)
+    memo[n] = output
+    return output
+
+print(fibnocci(10))
+
+def fibnocci_nth(n):
+
+    if n == 0 or n ==1:
+        return 1
+
+    output = [1, 1]
+    for i in range(2,n):
+        output.append(output[i-2] + output[i-1])
+
+    return output
+
+print(fibnocci_nth(20))
+
+
+def hasPathSum(root, targetSum):
+    res = []
+
+    def dfs(node, path):
+
+        if node is None:
+            return
+
+        path.append(int(node.val))
+        dfs(node.left, path)
+        dfs(node.right, path)
+
+        if node.left is None and node.right is None:
+            res.append(sum(path))
+
+        del path[-1]
+
+    dfs(root, [])
+    if targetSum in res:
+        return True
+
+    return False
+
+
+def flatten_dict(init, lkey=''):
+    ret = {}
+    for rkey,val in init.items():
+        key = lkey+rkey
+        if isinstance(val, dict):
+            ret.update(flatten_dict(val, key+'.'))
+        else:
+            ret[key] = val
+    return ret
+
+nums = {
+            "Key1" : "1",
+            "Key2" : {
+                "a" : "2",
+                "b" : "3",
+                "c" : {
+                    "d" : "3",
+                    "e" : {
+                        "" : "1"
+                    }
+                }
+            }
+        }
+print(parse_dict(nums))

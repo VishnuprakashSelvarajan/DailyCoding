@@ -431,4 +431,4 @@ nums = {
                 }
             }
         }
-print(parse_dict(nums))
+print(flatten_dict(nums))

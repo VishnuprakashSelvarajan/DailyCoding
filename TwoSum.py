@@ -432,3 +432,27 @@ nums = {
             }
         }
 print(flatten_dict(nums))
+
+def basic_regexp(text, pattern):
+    text = list(text)
+    pattern = list(pattern)
+    i = 0
+    while len(text) > 0:
+        if len(pattern) <= 0:
+            return False
+        print(text)
+        if text[0] == pattern[0] or pattern[0] == '*':
+            text.pop(0)
+            pattern.pop(0)
+        elif pattern[0] == '.':
+            text.pop(0)
+        else:
+            return False
+    if text:
+        return False
+
+    return True
+
+print(basic_regexp("abb", "a.*"))
+
+

@@ -22,18 +22,25 @@ def IsPalindrome(text):
 print(IsPalindrome('aaaaaabb'))
 
 def powerset(arr):
+    output = [[]]
+    for num in arr:
+        print(num)
+        print(output)
+        output += [curr + [num] for curr in output]
+    return output
+print(powerset([1,2,3,4]))
 
-    def all_subset(arr, subset):
-        while len(arr) > 0:
-            subset.append(arr[0:len(arr)])
-            arr.pop(-1)
-            powerset(arr)
-        return subset
-
-    subsets = []
-    for i in range(0,len(arr)):
-        subsets.append(all_subset(arr[i:len(arr)], []))
-
-    return subsets
-print(powerset([1,2,3,4,5,6,7,8,9]))
-
+def differencearray(arr1, arr2):
+    response = dashboard.switch.updateDeviceSwitchRoutingInterface(
+        serial, interface_id,
+        name='L3 interface',
+        subnet='192.168.1.0/24',
+        interfaceIp='192.168.1.2',
+        multicastRouting='disabled',
+        vlanId=100,
+        ospfSettings={'area': '0', 'cost': 1, 'isPassiveEnabled': True},
+        ipv6={"assignmentMode": "static",
+        "address": "1:2:3:4::1/48",
+        "prefix": "1:2:3:4::/48",
+        "gateway": "1:2:3:4::2"}
+    )

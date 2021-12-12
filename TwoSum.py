@@ -456,3 +456,18 @@ def basic_regexp(text, pattern):
 print(basic_regexp("abb", "a.*"))
 
 
+def maximum_path_sum(node):
+    res = []
+
+    def depth(node, path):
+        if node == None:
+            return
+        path.append(node.val)
+        depth(node.left)
+        depth(node.right)
+        if node.left == None and node.right == None:
+            res.append(sum(path))
+        del path[-1]
+
+    depth(node, [])
+    return max(res)

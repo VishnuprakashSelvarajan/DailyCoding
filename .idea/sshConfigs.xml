@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="sj20e19-lnx-v25" id="403f9ca2-edfb-4927-b644-4b4f2b5e26c4" port="22" nameFormat="DESCRIPTIVE" username="viselvar" />
+      <sshConfig authType="PASSWORD" host="viselvar-ads" id="403f9ca2-edfb-4927-b644-4b4f2b5e26c4" port="22" nameFormat="DESCRIPTIVE" username="viselvar" />
     </configs>
   </component>
 </project>

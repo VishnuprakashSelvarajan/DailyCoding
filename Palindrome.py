@@ -1,11 +1,8 @@
 def IsPalindrome(text):
-
     if len(text) == 2:
         return [True if text[0] == text[1] else False]
     if len(text) < 2:
         return True
-
-
 
     text = list(text)
     while len(text) > 1:
@@ -16,10 +13,11 @@ def IsPalindrome(text):
         else:
             return False
 
-
     return True
 
-print(IsPalindrome('aaaaaabb'))
+
+print(IsPalindrome('aaaaaa'))
+
 
 def powerset(arr):
     output = [[]]
@@ -28,7 +26,19 @@ def powerset(arr):
         print(output)
         output += [curr + [num] for curr in output]
     return output
-print(powerset([1,2,3,4]))
+
+
+print(powerset([1, 2, 3, 4]))
+
+
+def all_permutations(arr):
+    output = [[]]
+    for num in arr:
+        output += [curr + [num] for curr in output]
+
+    return output
+
+print(all_permutations([1, 2, 3, 4]))
 
 def differencearray(arr1, arr2):
     response = dashboard.switch.updateDeviceSwitchRoutingInterface(
@@ -40,7 +50,7 @@ def differencearray(arr1, arr2):
         vlanId=100,
         ospfSettings={'area': '0', 'cost': 1, 'isPassiveEnabled': True},
         ipv6={"assignmentMode": "static",
-        "address": "1:2:3:4::1/48",
-        "prefix": "1:2:3:4::/48",
-        "gateway": "1:2:3:4::2"}
+              "address": "1:2:3:4::1/48",
+              "prefix": "1:2:3:4::/48",
+              "gateway": "1:2:3:4::2"}
     )

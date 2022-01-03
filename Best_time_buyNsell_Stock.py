@@ -40,3 +40,15 @@ def maxProfit(prices):
 
 print(maxProfit([2,1,2,1,0,1,2]))
 
+def max_profit(prices):
+    minPrice = math.inf
+    maxProfit = 0
+    for i in range(len(prices)):
+        if prices[i] <= minPrice:
+            minPrice = prices[i]
+        if prices[i] - minPrice > 0:
+            maxProfit = max((prices[i] - minPrice), maxProfit)
+
+    return maxProfit
+
+print(max_profit([2,1,2,1,0,1,2]))
